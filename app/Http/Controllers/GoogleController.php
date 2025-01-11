@@ -43,7 +43,6 @@ class GoogleController extends Controller
                 return redirect()->route('home')->with('success', 'Đăng nhập thành công!');
             }
         } catch (Exception $e) {
-            // Xử lý lỗi nếu có và hiển thị thông báo lỗi
             return redirect()->route('login')->with('error', 'Có lỗi xảy ra khi đăng nhập bằng Google: ' . $e->getMessage());
         }
     }

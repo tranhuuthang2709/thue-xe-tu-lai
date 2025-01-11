@@ -57,7 +57,7 @@ class UserController extends Controller
         try {
             $acc = User::create($userData);
             Mail::to($acc->email)->send(new verifyUser($acc));
-            return redirect()->route('login')->with('success', 'Vui lòng kiểm tra Email để xác thực');
+            return redirect()->route('login')->with('success', 'Đã đăng kí thành công. Vui lòng kiểm tra Email để xác thực');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Đăng ký thất bại' . $th->getMessage());
         }

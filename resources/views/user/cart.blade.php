@@ -17,6 +17,13 @@
 
                     <!-- Bảng thông tin giỏ hàng -->
                     <div class="booking-details order-confirm-box">
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <strong>Lỗi!</strong> {{ session('error') }}
+                            </div>
+                        @endif
+
                         <table class="table table-striped table-hover" style="font-size: 14px">
                             <thead class="thead-dark">
                                 <tr>

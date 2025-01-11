@@ -30,6 +30,7 @@ class Admin_HomeController extends Controller
                 ->pluck('count', 'pickup_status')->toArray();
 
             $query = Booking::where('status', 'Thành công');
+            //theo thời gian
             if ($startDate && $endDate) {
                 $query->whereBetween('created_at', [$startDate, $endDate]);
             }
@@ -39,21 +40,20 @@ class Admin_HomeController extends Controller
                 ->orderBy('month')
                 ->pluck('revenue', 'month');
         } else if ($user->role === 'lessor') {
-            // Đối với vai trò người cho thuê
             $totalCars = Car::where('user_id', $user->id)->count();
             $totalUsers = User::where('id', $user->id)->count();
             $totalBookings = Booking::where('user_id', $user->id)->count();
             $totalRefund = Booking::where('status', 'Đã hủy')->where('user_id', $user->id)->count();
 
-            // Đếm trạng thái đặt chỗ cho Người cho thuê
-            $bookingStatusCounts = Booking_detail::whereHas('booking', function ($query) use ($user) {
-                $query->where('user_id', $user->id);
+            $carIds = Car::where('user_id', $user->id)->pluck('id')->toArray();
+
+            $bookingStatusCounts = Booking_detail::whereHas('booking', function ($query) use ($user, $carIds) {
+                $query->whereIn('car_id', $carIds);
             })
                 ->selectRaw('pickup_status, COUNT(*) as count')
                 ->groupBy('pickup_status')
                 ->pluck('count', 'pickup_status')->toArray();
 
-            // Lấy đặt chỗ và doanh thu hàng tháng cho người cho thuê
             $query = Booking::where('status', 'Thành công')->where('user_id', $user->id);
             if ($startDate && $endDate) {
                 $query->whereBetween('created_at', [$startDate, $endDate]);
@@ -66,7 +66,6 @@ class Admin_HomeController extends Controller
                 ->pluck('revenue', 'month');
         }
 
-        // Chuẩn bị dữ liệu doanh thu hàng tháng
         $monthlyRevenueData = array_fill(1, 12, 0);
         foreach ($monthlyRevenue as $month => $revenue) {
             $monthlyRevenueData[$month] = (float) $revenue;

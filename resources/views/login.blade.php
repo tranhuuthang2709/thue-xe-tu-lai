@@ -32,6 +32,18 @@
                         </div>
                         <h1>Đăng nhập</h1>
                         <p class="account-subtitle">Vui lòng nhập thông tin để đăng nhập</p>
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <strong>Lỗi!</strong> {{ session('error') }}
+                            </div>
+                        @endif
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="input-block">

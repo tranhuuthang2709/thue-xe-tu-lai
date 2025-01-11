@@ -23,7 +23,7 @@ class PaymentController extends Controller
             $return_date = $item->returnAddress->return_time;
             $exists = Booking_detail::checkBookingDateConflict($item->car_id, $pickup_date, $return_date);
             if ($exists == 'true') {
-                return redirect()->back()->with('error', 'Xe ' . $item->car->name . ' đã có người thuê trong khoảng thời gian này.');
+                return redirect()->back()->with('error', 'Xe ' . $item->car->name . ' đã có người thuê trong khoảng thời gian này. Vui lòng thay đổi thời gian hoặc chọn xe khác.');
             }
         }
 
