@@ -119,7 +119,7 @@
                                     value="{{ request('end_date') }}">
                             </div>
                             <div class="col-md-4 d-flex align-items-end">
-                                <button type="submit" class="btn btn-primary">Lọc doanh thu</button>
+                                <button type="submit" class="btn btn-primary">Hiển thị</button>
                             </div>
                         </div>
                     </form>

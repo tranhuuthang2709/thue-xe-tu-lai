@@ -26,6 +26,8 @@ class ListCarController extends Controller
         $province = $request->input('province1_value');
         $seat = $request->input('seat');
         $categories = $request->input('category', []);
+        $pickup_time = $request->input('pickup_date');
+        $return_time = $request->input('return_date');
 
 
         $query = Car::query();
@@ -51,6 +53,21 @@ class ListCarController extends Controller
                 $q->where('province', $province);
             });
         }
+        if ($pickup_time && $return_time) {
+            $query->whereDoesntHave('bookingsdetail', function ($q) use ($pickup_time, $return_time) {
+                $q->where(function ($query) use ($pickup_time, $return_time) {
+                    $query->whereHas('pickupAddress', function ($query) use ($pickup_time, $return_time) {
+                        $query->whereDate('pickup_time', '<=', $return_time)
+                            ->whereDate('pickup_time', '>=', $pickup_time);
+                    })
+                        ->orWhereHas('returnAddress', function ($query) use ($pickup_time, $return_time) {
+                            $query->whereDate('return_time', '<=', $return_time)
+                                ->whereDate('return_time', '>=', $pickup_time);
+                        });
+                });
+            });
+        }
+
         $cars = $query->paginate(5);
         $brands = Brand::all();
         $categories = Category::all();

@@ -489,16 +489,21 @@
 
 
                                 <!-- Submit Button -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="input-block mb-0">
-                                            <div class="search-btn">
-                                                <button type="submit" class="btn btn-primary check-available w-100">Xác
-                                                    nhận </button>
+                                @can('customer')
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-block mb-0">
+                                                <div class="search-btn">
+                                                    <button type="submit" class="btn btn-primary check-available w-100">Xác
+                                                        nhận </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endcan
+
+
+
                             </form>
                         </div>
                     </div>

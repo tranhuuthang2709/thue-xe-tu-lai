@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            {{-- <div class="col-md-3">
                                 <div class="input-block">
                                     <label for="brand">Hãng xe</label>
                                     <div class="group-img">
@@ -69,8 +69,24 @@
                                         <!-- <span ><i class="feather-users"></i></span> -->
                                     </div>
                                 </div>
+                            </div> --}}
+                            <div class="col-md-3">
+                                <div class="input-block">
+                                    <label for="pickup_date">Ngày đi</label>
+                                    <div class="group-img">
+                                        <input type="date" id="pickup_date" name="pickup_date" class="form-control">
+                                    </div>
+                                </div>
                             </div>
 
+                            <div class="col-md-3">
+                                <div class="input-block">
+                                    <label for="return_date">Ngày về</label>
+                                    <div class="group-img">
+                                        <input type="date" id="return_date" name="return_date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <!-- Nút tìm kiếm -->
