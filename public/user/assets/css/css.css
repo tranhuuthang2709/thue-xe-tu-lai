@@ -1,0 +1,44 @@
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-style: italic;
+}
+
+.discount-price {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.error-message{
+    color:red;
+    font-size: 15px;
+    font-style: italic;
+}
+.text-right{
+ text-align: right;
+}
+#addres_car
+#return_location,
+#return_time,
+#return_fields {
+    display: none; /* Ẩn các trường khi mới tải trang */
+}
+#delivery_location,
+#delivery_time,
+#delivery_fields {
+    display: block; /* Hiển thị các trường khi mới tải trang */
+}
+
+.fav-item1 {
+    position: absolute;
+    margin-top: 5px; /* Khoảng cách từ cạnh trên */
+    margin-left: 5px; /* Khoảng cách từ cạnh trái */
+    background-color: rgba(255, 255, 255, 0.8); /* Nền mờ màu trắng */
+    padding: 5px 10px; /* Tạo khoảng cách bên trong */
+    border-radius: 5px; /* Bo tròn góc nền */
+    font-size: 12px;
+    color: #5e5e5e; /* Màu chữ đen */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng */
+}
+
+

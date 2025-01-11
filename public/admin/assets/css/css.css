@@ -1,0 +1,57 @@
+.logo-edit{
+    margin-top: 15px;
+    color: white;
+    font-size: 24px;
+}
+.error-message{
+    color:red;
+    font-size: 15px;
+    font-style: italic;
+}
+.image-item {
+    display: inline-block;
+    position: relative;
+}
+
+.image-item a.delete-image-form {
+    position: absolute;
+    top: 0;
+    right: 10px;   
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 5px 8px;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+.image-item a.delete-image-form:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+#suggestions {
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    position: absolute;
+    background: white;
+    z-index: 50;
+    width: 360px; /* Để phần gợi ý có chiều rộng khớp với input */
+    border-radius: 4px; /* Bo góc cho đẹp */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ */
+}
+
+.suggestion-item {
+    padding: 10px; /* Thêm khoảng cách padding */
+    cursor: pointer;
+    font-size: 14px; /* Font chữ nhỏ gọn */
+    color: #333; /* Màu chữ */
+}
+
+.suggestion-item:hover {
+    background-color: #e9ecef; /* Đổi màu khi hover */
+}
